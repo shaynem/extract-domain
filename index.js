@@ -25,7 +25,7 @@ const starters = ['.', '/', '@'];
  */
 function getDomainFromUrl(url, opts) {
     if (typeof url !== 'string') {
-        throwTypeError(url.opts);
+        throwTypeError(url, opts);
     }
 
     let domainInc = 0;
