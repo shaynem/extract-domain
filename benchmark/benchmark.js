@@ -1,5 +1,5 @@
 const bench = require('nanobench');
-const extractDomainDist = require('./dist/extract-domain');
+const extractDomainDist = require('../dist/extract-domain');
 const extractDomain = require('../index');
 const url = 'https://www.npmjs.com/package/extract-domain';
 

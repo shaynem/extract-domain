@@ -50,6 +50,14 @@ const urls = [
 extractDomain(urls[0]); // npmjs.com
 
 extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org', 'co.uk', 'email.com' ]
+
+const urlError = [
+    "ftp://example.org/resource.txt",
+    "http://example.co.uk/",
+    "exampledotcom"
+];
+
+extractDomains(urlError, { verbose: true }); // The given URL exampledotcom is not a valid URL. Please verify your string|array.'
 ```
 
 ## TLD support
@@ -63,6 +71,7 @@ const url =
 extractDomain(url, { tld: true });
 // example.co.uk
 ```
+
 
 However, using the tld flag will slow down the process by many seconds. Benchmark:
 

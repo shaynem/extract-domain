@@ -1,5 +1,11 @@
-function throwTypeError() {
-    throw new TypeError('The given URL is not a string. Please verify your string|array.');
+function throwTypeError(url, opts) {
+    throw new TypeError(
+        'The given URL ' + opts.verbose
+            ? url
+            : '' + ' is not a ' + opts.verbose
+            ? 'vaild URL'
+            : 'string' + '. Please verify your string|array.'
+    );
 }
 
 const endings = ['/', ':', '?', '#'];
@@ -7,18 +13,19 @@ const starters = ['.', '/', '@'];
 
 /**
  * Options to extract domain.
- * @typedef {({tld: boolean})} GetDomainOptions
+ * @typedef {({tld: boolean, verbose: boolean})} GetDomainOptions
  */
 
 /**
  * @param {string} url
  * @param {GetDomainOptions} opts
  *  - `tld` permit to get Top Level Domain like `*.co.uk`
+ *  - `verbose` output invalid input string
  * @returns {string}
  */
 function getDomainFromUrl(url, opts) {
     if (typeof url !== 'string') {
-        throwTypeError();
+        throwTypeError(url.opts);
     }
 
     let domainInc = 0;
@@ -100,6 +107,7 @@ function getDomainFromUrl(url, opts) {
  * @param {string} url
  * @param {GetDomainOptions} opts
  *  - `tld` permit to get Top Level Domain like `*.co.uk`
+ *  - `verbose` output invalid input string
  * @returns {string}
  */
 export default function extractDomain(urls, opts = {}) {
@@ -116,6 +124,6 @@ export default function extractDomain(urls, opts = {}) {
 
         return extractedUrls;
     } else {
-        throwTypeError();
+        throwTypeError(urls[i], opts);
     }
 }
