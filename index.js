@@ -1,8 +1,8 @@
 function throwTypeError(url, opts) {
     throw new TypeError(
-        'The given URL ' + opts.verbose
+        'The given URL ' + opts?.verbose
             ? url
-            : '' + ' is not a ' + opts.verbose
+            : '' + ' is not a ' + opts?.verbose
             ? 'vaild URL'
             : 'string' + '. Please verify your string|array.'
     );
